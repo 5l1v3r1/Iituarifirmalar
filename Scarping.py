@@ -66,7 +66,7 @@ def SendMail(to):
     body = "Your body message "
     msg.attach(MIMEText(body, 'plain'))
     part = MIMEApplication(open("/Users/admn/Downloads/CvOnurSabitSalman.pdf","rb").read())#path of your cv file
-    part.add_header('Content-Disposition', 'attachment', filename="CvOnurSabitSalman.pdf")#name of your cv file with extension
+    part.add_header('Content-Disposition', 'attachment', filename="cv.pdf")#name of your cv file with extension
     msg.attach(part)
     server = smtplib.SMTP('smtp.live.com', 587)
     server.starttls()
@@ -108,7 +108,7 @@ print("Number of Firm",len(list_of_dicts))
 for i in range(len(list_of_dicts)):
     try:
          SendMail(list_of_dicts[i].get('mail'))#Burda sirayla tum mailere posta yolluyor,
-         # İsterseniz dict listesi firmalari sektorle gore filtreleyip istediğiniz sektorde çalişan firmaya yollabilirsiniz
+         # İsterseniz dict listesindeki firmalari sektorle gore filtreleyip istediğiniz sektorde çalişan firmaya yollabilirsiniz
          print("Sended this mail "+list_of_dicts[i].get('mail'))
          list_of_dicts[i]['sended'] = 1;
     except Exception as e: print(e)
